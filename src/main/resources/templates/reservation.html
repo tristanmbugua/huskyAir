@@ -1,0 +1,91 @@
+<html xmlns:th="https://thymeleaf.org">
+	<head>
+		<style>
+			html {font-family: 'Courier New', Courier, monospace; max-width: 800px;}
+            .header {padding: 10px; background-color: lightgrey;}
+            .single {width: 80%; margin: 10px; display: inline-block;}
+            .double {width: 40%; margin: 10px; display: inline-block;}
+            .triple {width: 25%; margin: 10px; display: inline-block;}
+            .submit {margin: 20px;}
+            .errors {color: red;}
+		</style>
+	</head>
+	<form action="/reservation" method="post" th:object="${reservation}">
+		<div class="credentials">
+            <div>
+                <div>
+                    <input class="single" th:field="*{reservationID}" required>
+                </div>
+                <div>
+                    <label class="single">Reservation ID</label>
+                </div>
+                <div class="errors">
+                    <span class="double" th:if="${#fields.hasErrors('reservationID')}" th:errors="*{reservationID}"></span>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <input class="double" th:field="*{firstname}">
+                    <input class="double" th:field="*{lastname}">
+                </div>
+                <div>
+                    <label class="double">Firstname</label>
+                    <label class="double">Lastname</label>
+                </div>
+                <div class="errors">
+                    <span class="double" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span>
+                    <span class="double" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
+                </div>
+            </div>
+                
+
+            <div>
+                <div id = "credentials">
+                    <input class="double" th:field="*{passengers}"  required>
+                    <input class="double" th:field="*{flightclass}">
+                </div>
+                <div>
+                    <label class="double">Passengers</label>
+                    <label class="double">Flight Class</label>
+                </div>
+                <div class="errors">
+                    <span class="double" th:if="${#fields.hasErrors('passengers')}" th:errors="*{passengers}"></span>
+                    <span class="double" th:if="${#fields.hasErrors('flightclass')}" th:errors="*{flightclass}"></span>
+                </div>
+            </div>
+                
+
+            <div>
+                <div id = "credentials">
+                    <input class="double" th:field="*{phonenumber}" required>
+                    <input class="double" th:field="*{time}" required>
+                </div>
+                <div>
+                    <label class="double" type="number">Phone Number</label>
+                    <label class="double">time</label>
+                </div>
+                <div class="errors">
+                    <span class="double" th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}"></span>
+                    <span class="double" th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></span>
+                </div>
+            </div>
+                
+
+            <div>
+                <div id = "credentials">
+                    <input class="single" type="date" th:field="*{dateofdeparture}" required>
+                </div>
+                <div>
+                    <label class="double">Date Of Departure</label>
+                </div>
+                <div class="errors">
+                    <span class="single" th:if="${#fields.hasErrors('dateofdeparture')}" th:errors="*{dateofdeparture}"></span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <input class="single" type="submit">
+        </div>
+	</form>
+</html>

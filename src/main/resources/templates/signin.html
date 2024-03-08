@@ -1,0 +1,34 @@
+<html xmlns:th="https://thymeleaf.org">
+	<head>
+		<style>
+			html {font-family: 'Courier New', Courier, monospace; max-width: 800px;}
+            .header {padding: 10px; background-color: lightgrey;}
+            .single {width: 80%; margin: 10px; display: inline-block;}
+            .double {width: 40%; margin: 10px; display: inline-block;}
+            .triple {width: 25%; margin: 10px; display: inline-block;}
+            .submit {margin: 20px;}
+            .errors {color: red;}
+		</style>
+	</head>
+	<form action="/signIn" method="post" th:object="${user}">
+		<div class="credentials">
+			<div id = "credentials">
+				<input class="double" th:field="*{username}">
+				<input class="double" th:field="*{password}">
+			</div>
+			<div>
+				<label class="double">Username</label>
+				<label class="double">Password</label>
+			</div>
+			<div class="errors">
+				<span class="double" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+				<span class="double" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+			</div>
+			<div>
+				<input class="double" type="submit">
+				
+			</div>
+		</div>
+	</form>
+	<a class="double" href="/register"><button>Register</button></a>
+</html>
